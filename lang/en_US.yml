@@ -1,0 +1,4 @@
+error:
+  netherportal: '&cYou have to complete %netherportalquest% &cto use a nether portal!'
+  endportal: '&cYou have to complete %endportalquest% &cto use an end portal!'
+  endgateway: '&cYou have to complete %endgatewayquest% &cto use a lost end city portal!'
