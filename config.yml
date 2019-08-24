@@ -1,0 +1,41 @@
+#Use this link to find a complete list of available advancements: https://pastebin.com/JTysJquB
+#Use this link to find a complete list of available achievements: https://pastebin.com/0T9NnaF2 
+Language: "en_US"
+Prefix: "&7[PortalBlockerFree] "
+Teleports:
+  #Block lost end city portal until achievement/advancement is not completed
+  EGBlock: true
+  #Block end portal until achievement/advancement is not completed
+  EPBlock: true
+  #Block nether portal until achievement/advancement is not completed
+  NPBlock: true
+#Lost End City Portal
+EndGateway:
+  #For version older than 1.11.2 (1.11.2 included)
+  Achievement: "THE_END"
+  #For version newer than 1.12 (1.12 included)
+  Advancement: "end/dragon_egg"
+  #Custom quest name that players will receive as a notice
+  QuestName: "&aEnter The End City Gateway"
+  #If true, players will be notified (you can find it in lang files)
+  ErrorMessage: true
+#End Portal
+EndPortal:
+  #For version older than 1.11.2 (1.11.2 included)
+  Achievement: "GET_BLAZE_ROD"
+  #For version newer than 1.12 (1.12 included)
+  Advancement: "story/follow_ender_eye"
+  #Custom quest name that players will receive as a notice
+  QuestName: "&aMake An Ender Eye"
+  #If true, players will be notified (you can find it in lang files)
+  ErrorMessage: true
+#Nether Portal
+NetherPortal:
+  #For version older than 1.11.2 (1.11.2 included)
+  Achievement: "GET_DIAMONDS"
+  #For version newer than 1.12 (1.12 included)
+  Advancement: "story/form_obsidian"
+  #Custom quest name that players will receive as a notice
+  QuestName: "&aMine Obsidian"
+  #If true, players will be notified (you can find it in lang files)
+  ErrorMessage: true
