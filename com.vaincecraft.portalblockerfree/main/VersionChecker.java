@@ -7,12 +7,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.logging.Level;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-
-import net.md_5.bungee.api.ChatColor;
 
 public class VersionChecker implements Listener{
 	public String pluginVersion = Main.getInstance().getDescription().getVersion();
@@ -50,6 +49,8 @@ public class VersionChecker implements Listener{
 	}
 	@EventHandler
 	public void onJoin(PlayerJoinEvent j) {
+		String prefixs = Main.getInstance().getConfig().getString("Prefix");
+		String prefix = prefixs.replaceAll("&", "§");
 		Player p = j.getPlayer();
 		if(p.hasPermission("portalblockerfree.updates") && Main.getInstance().getConfig().getBoolean("CheckUpdate")) {
 			try {
@@ -58,7 +59,7 @@ public class VersionChecker implements Listener{
 		      connection.setRequestMethod("POST");
 		      String version = new BufferedReader(new InputStreamReader(connection.getInputStream())).readLine();
 		      if (!pluginVersion.equals(version)) {
-		    	  p.sendMessage(ChatColor.GRAY + "[PortalBlockerFree] " + ChatColor.RED + "You are not in the latest version, please update the plugin from our spigot page: https://www.spigotmc.org/resources/teleport-portal-blocker-free-1-7-10-1-14-4.70785/");
+		    	  p.sendMessage(prefix + ChatColor.RED + "You are not in the latest version, please update the plugin from our spigot page: https://www.spigotmc.org/resources/teleport-portal-blocker-free-1-7-10-1-14-4.70785/");
 		      }
 		    }
 		    catch (IOException e) {
