@@ -1,7 +1,18 @@
 #Use this link to find a complete list of available advancements: https://pastebin.com/JTysJquB
-#Use this link to find a complete list of available achievements: https://pastebin.com/0T9NnaF2 
+#Use this link to find a complete list of available achievements: https://pastebin.com/0T9NnaF2
+#If true it will check plugin version in console
+ConsoleCheckUpdate: true
+#If true, players with portalblockerfree.updates will reacive an update message in chat (if plugin is not up to date)
+CheckUpdate: true
 Language: "en_US"
 Prefix: "&7[PortalBlockerFree] "
+PermBlockTeleports:
+  #Block permanently lost end city portal use
+  EGBlock: false
+  #Block permanently end portal use
+  EPBlock: false
+  #Block permanently nether portal use
+  NPBlock: false
 Teleports:
   #Block lost end city portal until achievement/advancement is not completed
   EGBlock: true
@@ -19,6 +30,8 @@ EndGateway:
   QuestName: "&aEnter The End City Gateway"
   #If true, players will be notified (you can find it in lang files)
   ErrorMessage: true
+  #If true, players will be notified (you can find it in lang files)
+  PermBlockErrorMessage: true
 #End Portal
 EndPortal:
   #For version older than 1.11.2 (1.11.2 included)
@@ -29,6 +42,8 @@ EndPortal:
   QuestName: "&aMake An Ender Eye"
   #If true, players will be notified (you can find it in lang files)
   ErrorMessage: true
+  #If true, players will be notified (you can find it in lang files)
+  PermBlockErrorMessage: true
 #Nether Portal
 NetherPortal:
   #For version older than 1.11.2 (1.11.2 included)
@@ -39,3 +54,5 @@ NetherPortal:
   QuestName: "&aMine Obsidian"
   #If true, players will be notified (you can find it in lang files)
   ErrorMessage: true
+  #If true, players will be notified (you can find it in lang files)
+  PermBlockErrorMessage: true
