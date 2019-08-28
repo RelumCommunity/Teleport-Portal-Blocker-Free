@@ -1,3 +1,7 @@
+permblockteleport:
+  netherportal: '&cNetherPortals está desactivado permanentemente en este servidor!'
+  endportal: '&cEndPortals está permanentemente deshabilitado en este servidor!'
+  endgateway: '&cEndGateways está permanentemente deshabilitado en este servidor!'
 error:
   netherportal: '&cTienes que completar %netherportalquest% &cpara usar un portal del nether!'
   endportal: '&cTienes que completar %endportalquest% &cpara usar un portal del end!'
