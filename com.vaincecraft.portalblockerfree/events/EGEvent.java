@@ -23,31 +23,41 @@ public class EGEvent implements Listener {
 		String endgatewayerror = Main.getLangFile().getString("error.endgateway");
 		String ege = endgatewayerror.replaceAll("&", "§");
 		String colormsg1 = ege.replaceAll("%endgatewayquest%", endge);
-		if (Main.getInstance().getConfig().getBoolean("Teleports.EGBlock")) {
-			if (i.getCause().equals(TeleportCause.END_GATEWAY)) {
-				if (Bukkit.getVersion().contains("1.12") || Bukkit.getVersion().contains("1.13") || Bukkit.getVersion().contains("1.14")){
-					if (hasAdvancement(i.getPlayer())) {
-						return;
+		String endgatewaypermblockmessage = Main.getLangFile().getString("permblockteleport.endgateway");
+		String colormsg2 = endgatewaypermblockmessage.replaceAll("&", "§");
+		if (!Main.getInstance().getConfig().getBoolean("PermBlockTeleports.EGBlock")) {
+			if (Main.getInstance().getConfig().getBoolean("Teleports.EGBlock")) {
+				if (i.getCause().equals(TeleportCause.END_GATEWAY)) {
+					if (Bukkit.getVersion().contains("1.12") || Bukkit.getVersion().contains("1.13") || Bukkit.getVersion().contains("1.14")){
+						if (hasAdvancement(i.getPlayer())) {
+							return;
+						}
+						else {
+							i.setCancelled(true);
+							if (Main.getInstance().getConfig().getBoolean("EndGateway.ErrorMessage")) {
+								i.getPlayer().sendMessage(prefix + colormsg1);
+							}
+						}
 					}
 					else {
-						i.setCancelled(true);
-						if (Main.getInstance().getConfig().getBoolean("EndGateway.ErrorMessage")) {
-							i.getPlayer().sendMessage(prefix + colormsg1);
+						String ach = Main.getInstance().getConfig().getString("EndGateway.Achievement");
+						if (i.getPlayer().hasAchievement(Achievement.valueOf(ach))) {
+							return;
+						}
+						else {
+							i.setCancelled(true);
+							if (Main.getInstance().getConfig().getBoolean("EndGateway.ErrorMessage")) {
+								i.getPlayer().sendMessage(prefix + colormsg1);
+							}
 						}
 					}
 				}
-				else {
-					String ach = Main.getInstance().getConfig().getString("EndGateway.Achievement");
-					if (i.getPlayer().hasAchievement(Achievement.valueOf(ach))) {
-						return;
-					}
-					else {
-						i.setCancelled(true);
-						if (Main.getInstance().getConfig().getBoolean("EndGateway.ErrorMessage")) {
-							i.getPlayer().sendMessage(prefix + colormsg1);
-						}
-					}
-				}
+			}
+		}
+		else {
+			i.setCancelled(true);
+			if (Main.getInstance().getConfig().getBoolean("EndGateway.PermBlockErrorMessage")) {
+				i.getPlayer().sendMessage(prefix + colormsg2);
 			}
 		}
 	}
