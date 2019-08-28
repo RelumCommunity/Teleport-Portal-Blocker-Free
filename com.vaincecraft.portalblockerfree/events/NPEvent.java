@@ -23,31 +23,41 @@ public class NPEvent implements Listener {
 		String netherportalerror = Main.getLangFile().getString("error.netherportal");
 		String npe = netherportalerror.replaceAll("&", "§");
 		String colormsg1 = npe.replaceAll("%netherportalquest%", netherpe);
-		if (Main.getInstance().getConfig().getBoolean("Teleports.NPBlock")) {
-			if (i.getCause().equals(TeleportCause.NETHER_PORTAL)) {
-				if (Bukkit.getVersion().contains("1.12") || Bukkit.getVersion().contains("1.13") || Bukkit.getVersion().contains("1.14")){
-					if (hasAdvancement(i.getPlayer())) {
-						return;
+		String netherportalpermblockmessage = Main.getLangFile().getString("permblockteleport.netherportal");
+		String colormsg2 = netherportalpermblockmessage.replaceAll("&", "§");
+		if (!Main.getInstance().getConfig().getBoolean("PermBlockTeleports.NPBlock")) {
+			if (Main.getInstance().getConfig().getBoolean("Teleports.NPBlock")) {
+				if (i.getCause().equals(TeleportCause.NETHER_PORTAL)) {
+					if (Bukkit.getVersion().contains("1.12") || Bukkit.getVersion().contains("1.13") || Bukkit.getVersion().contains("1.14")){
+						if (hasAdvancement(i.getPlayer())) {
+							return;
+						}
+						else {
+							i.setCancelled(true);
+							if (Main.getInstance().getConfig().getBoolean("NetherPortal.ErrorMessage")) {
+								i.getPlayer().sendMessage(prefix + colormsg1);
+							}
+						}
 					}
 					else {
-						i.setCancelled(true);
-						if (Main.getInstance().getConfig().getBoolean("NetherPortal.ErrorMessage")) {
-							i.getPlayer().sendMessage(prefix + colormsg1);
+						String ach = Main.getInstance().getConfig().getString("NetherPortal.Achievement");
+						if (i.getPlayer().hasAchievement(Achievement.valueOf(ach))) {
+							return;
+						}
+						else {
+							i.setCancelled(true);
+							if (Main.getInstance().getConfig().getBoolean("NetherPortal.ErrorMessage")) {
+								i.getPlayer().sendMessage(prefix + colormsg1);
+							}
 						}
 					}
 				}
-				else {
-					String ach = Main.getInstance().getConfig().getString("NetherPortal.Achievement");
-					if (i.getPlayer().hasAchievement(Achievement.valueOf(ach))) {
-						return;
-					}
-					else {
-						i.setCancelled(true);
-						if (Main.getInstance().getConfig().getBoolean("NetherPortal.ErrorMessage")) {
-							i.getPlayer().sendMessage(prefix + colormsg1);
-						}
-					}
-				}
+			}
+		}
+		else {
+			i.setCancelled(true);
+			if (Main.getInstance().getConfig().getBoolean("NetherPortal.PermBlockErrorMessage")) {
+				i.getPlayer().sendMessage(prefix + colormsg2);
 			}
 		}
 	}
