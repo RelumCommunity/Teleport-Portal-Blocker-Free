@@ -2,7 +2,9 @@ package com.vaincecraft.portalblockerfree.main;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.vaincecraft.portalblockerfree.messages.LanguageFile;
@@ -13,44 +15,40 @@ import com.vaincecraft.portalblockerfree.events.NPEvent;
 
 public class Main extends JavaPlugin {
 	public static Main plugin;
-	public String pluginVersion = "V.1.3";
+	public String pluginVersion = "V.1.4";
 	public void onEnable() {
 		plugin = this;
+		String ver = Bukkit.getVersion();
+		ConsoleCommandSender cmsg = plugin.getServer().getConsoleSender();
+		PluginManager bpm = Bukkit.getPluginManager();
 		
-		String versioncheck = Bukkit.getVersion();
-		plugin.getServer().getConsoleSender().sendMessage(versioncheck);
+		String versioncheck = ver;
 		String version[] = versioncheck.split(" ");
-		if (Bukkit.getVersion().contains("Spigot")) {
-			String servercheck = Bukkit.getVersion();
-			String server[] = servercheck.split("-");
-			plugin.getServer().getConsoleSender().sendMessage("[PortalBlockerFree INFO] " + ChatColor.YELLOW + "PortalBlockerFree using: " + server[1] + " version " + version[1] + version[2]);
+		String servercheck = ver;
+		String server[] = servercheck.split("-");
+		if (ver.contains("Spigot")) {
+			cmsg.sendMessage("[PortalBlockerFree INFO] " + ChatColor.YELLOW + "PortalBlockerFree using: " + server[1] + " version " + version[1] + version[2]);
 		}
 		else {
-			plugin.getServer().getConsoleSender().sendMessage("[PortalBlockerFree INFO] " + ChatColor.YELLOW + "PortalBlockerFree using: " + Bukkit.getVersion() + ChatColor.RED + ("UNTESTED SERVER VERSION"));
+			cmsg.sendMessage("[PortalBlockerFree INFO] " + ChatColor.YELLOW + "PortalBlockerFree using: " + ver + ChatColor.RED + ("UNTESTED SERVER VERSION"));
 		}
-		
-		Bukkit.getPluginManager().registerEvents(new NPEvent(), this);
-		Bukkit.getPluginManager().registerEvents(new EPEvent(), this);
-		if (Bukkit.getVersion().contains("1.9.2") || Bukkit.getVersion().contains("1.9.4") || Bukkit.getVersion().contains("1.10") || Bukkit.getVersion().contains("1.11") || Bukkit.getVersion().contains("1.12") || Bukkit.getVersion().contains("1.13") || Bukkit.getVersion().contains("1.14")) {
-			Bukkit.getPluginManager().registerEvents(new EGEvent(), this);
+		bpm.registerEvents(new NPEvent(), this);
+		bpm.registerEvents(new EPEvent(), this);
+		if (ver.contains("1.9") || ver.contains("1.10") || ver.contains("1.11") || ver.contains("1.12") || ver.contains("1.13") || ver.contains("1.14")) {
+			bpm.registerEvents(new EGEvent(), this);
 		}
-		if (Bukkit.getVersion().contains("1.9")) {
-			if (!Bukkit.getVersion().contains("1.9.2")) {
-				if (!Bukkit.getVersion().contains("1.9.4")) {
-					String servercheck = Bukkit.getVersion();
-					String server[] = servercheck.split("-");
-					plugin.getServer().getConsoleSender().sendMessage("[PortalBlockerFree ERROR] " + ChatColor.RED + "PortalBlockerFree using: " + server[1] + ChatColor.RED + ("EndGateway Option Disabled"));
-				}
-			}
+		if (ver.contains("1.9")) {
+			cmsg.sendMessage("[PortalBlockerFree ERROR] " + ChatColor.RED + "PortalBlockerFree using: " + server[1] + " version " + version[1] + version[2] + ChatColor.RED + ("(NetherPortal Option Should Not Work Due To Spigot Issue)"));
 		}
-		plugin.getServer().getConsoleSender().sendMessage("[PortalBlockerFree] " + ChatColor.GREEN + "PortalBlockerFree has been enabled (" + pluginVersion + ")");
+		cmsg.sendMessage("[PortalBlockerFree] " + ChatColor.GREEN + "PortalBlockerFree has been enabled (" + pluginVersion + ")");
 		
 		saveDefaultConfig();
 		new LanguageFile();
 	 	new messages();
 	}
 	public void onDisable() {
-		plugin.getServer().getConsoleSender().sendMessage("[PortalBlockerFree] " + ChatColor.RED + "PortalBlockerFree has been disabled (" + pluginVersion + ")");
+		ConsoleCommandSender cmsg = plugin.getServer().getConsoleSender();
+		cmsg.sendMessage("[PortalBlockerFree] " + ChatColor.RED + "PortalBlockerFree has been disabled (" + pluginVersion + ")");
 	}
 	public static Main getInstance() {
 		return plugin;
