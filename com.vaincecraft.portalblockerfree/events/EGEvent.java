@@ -4,6 +4,7 @@ import org.bukkit.Achievement;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.advancement.Advancement;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,53 +17,57 @@ import com.vaincecraft.portalblockerfree.main.Main;
 public class EGEvent implements Listener {
 	@EventHandler
 	public void PortalEnter (PlayerTeleportEvent i) {
-		String prefixs = Main.getInstance().getConfig().getString("Prefix");
-		String prefix = prefixs.replaceAll("&", "§");
-		String endgatewaye = Main.getInstance().getConfig().getString("EndGateway.QuestName");
-		String endge = endgatewaye.replaceAll("&", "§");
-		String endgatewayerror = Main.getLangFile().getString("error.endgateway");
-		String ege = endgatewayerror.replaceAll("&", "§");
-		String colormsg1 = ege.replaceAll("%endgatewayquest%", endge);
-		String endgatewaypermblockmessage = Main.getLangFile().getString("permblockteleport.endgateway");
-		String colormsg2 = endgatewaypermblockmessage.replaceAll("&", "§");
-		if (!Main.getInstance().getConfig().getBoolean("PermBlockTeleports.EGBlock")) {
-			if (Main.getInstance().getConfig().getBoolean("Teleports.EGBlock")) {
-				if (i.getCause().equals(TeleportCause.END_GATEWAY)) {
-					if (Bukkit.getVersion().contains("1.12") || Bukkit.getVersion().contains("1.13") || Bukkit.getVersion().contains("1.14")){
-						if (hasAdvancement(i.getPlayer())) {
+		if (i.getCause().equals(TeleportCause.END_GATEWAY)) {
+			Player p = i.getPlayer();
+			String ver = Bukkit.getVersion();
+			FileConfiguration main = Main.getInstance().getConfig();
+			String prefixs = main.getString("Prefix");
+			String prefix = prefixs.replaceAll("&", "§");
+			String endgatewaye = main.getString("EndGateway.QuestName");
+			String endge = endgatewaye.replaceAll("&", "§");
+			String endgatewayerror = Main.getLangFile().getString("error.endgateway");
+			String ege = endgatewayerror.replaceAll("&", "§");
+			String colormsg1 = ege.replaceAll("%endgatewayquest%", endge);
+			String endgatewaypermblockmessage = Main.getLangFile().getString("permblockteleport.endgateway");
+			String colormsg2 = endgatewaypermblockmessage.replaceAll("&", "§");
+			if (!main.getBoolean("PermBlockTeleports.EGBlock")) {
+				if (main.getBoolean("Teleports.EGBlock")) {
+					if (ver.contains("1.12") || ver.contains("1.13") || ver.contains("1.14")){
+						if (hasAdvancement(p)) {
 							return;
 						}
 						else {
 							i.setCancelled(true);
-							if (Main.getInstance().getConfig().getBoolean("EndGateway.ErrorMessage")) {
-								i.getPlayer().sendMessage(prefix + colormsg1);
+							if (main.getBoolean("EndGateway.ErrorMessage")) {
+								p.sendMessage(prefix + colormsg1);
 							}
 						}
 					}
 					else {
-						String ach = Main.getInstance().getConfig().getString("EndGateway.Achievement");
-						if (i.getPlayer().hasAchievement(Achievement.valueOf(ach))) {
+						String ach = main.getString("EndGateway.Achievement");
+						if (p.hasAchievement(Achievement.valueOf(ach))) {
 							return;
 						}
 						else {
 							i.setCancelled(true);
-							if (Main.getInstance().getConfig().getBoolean("EndGateway.ErrorMessage")) {
-								i.getPlayer().sendMessage(prefix + colormsg1);
+							if (main.getBoolean("EndGateway.ErrorMessage")) {
+								p.sendMessage(prefix + colormsg1);
 							}
 						}
 					}
 				}
 			}
-		}
-		else {
-			i.setCancelled(true);
-			if (Main.getInstance().getConfig().getBoolean("EndGateway.PermBlockErrorMessage")) {
-				i.getPlayer().sendMessage(prefix + colormsg2);
+			else {
+				i.setCancelled(true);
+				if (main.getBoolean("EndGateway.PermBlockErrorMessage")) {
+					p.sendMessage(prefix + colormsg2);
+				}
 			}
 		}
 	}
 	public static boolean hasAdvancement(Player p) {
-		String adv = Main.getInstance().getConfig().getString("EndGateway.Advancement");
+		FileConfiguration main = Main.getInstance().getConfig();
+		String adv = main.getString("EndGateway.Advancement");
 		Advancement advancement = Bukkit.getAdvancement(NamespacedKey.minecraft(adv));
 		if (p.getAdvancementProgress(advancement).isDone()) {
 			return true;
