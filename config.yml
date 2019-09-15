@@ -2,7 +2,7 @@
 #Use this link to find a complete list of available achievements: https://pastebin.com/0T9NnaF2
 #If true it will check plugin version in console
 ConsoleCheckUpdate: true
-#If true, players with portalblockerfree.updates will reacive an update message in chat (if plugin is not up to date)
+#If true, players with portalblockerfree.updates will recieve an update message in chat (if plugin is not up to date)
 CheckUpdate: true
 Language: "en_US"
 Prefix: "&7[PortalBlockerFree] "
@@ -13,7 +13,7 @@ PermBlockTeleports:
   EPBlock: false
   #Block permanently nether portal use
   NPBlock: false
-Teleports:
+BlockThroughAchievement:
   #Block lost end city portal until achievement/advancement is not completed
   EGBlock: true
   #Block end portal until achievement/advancement is not completed
