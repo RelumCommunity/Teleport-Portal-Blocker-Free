@@ -7,15 +7,15 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.vaincecraft.portalblockerfree.events.cancel.EGEvent;
+import com.vaincecraft.portalblockerfree.events.cancel.EPEvent;
+import com.vaincecraft.portalblockerfree.events.cancel.NPEvent;
 import com.vaincecraft.portalblockerfree.messages.LanguageFile;
 import com.vaincecraft.portalblockerfree.messages.messages;
-import com.vaincecraft.portalblockerfree.events.EGEvent;
-import com.vaincecraft.portalblockerfree.events.EPEvent;
-import com.vaincecraft.portalblockerfree.events.NPEvent;
 
 public class Main extends JavaPlugin {
 	public static Main plugin;
-	public String pluginVersion = "V.1.4";
+	public String pluginVersion = "V.1.6";
 	public void onEnable() {
 		plugin = this;
 		String ver = Bukkit.getVersion();
@@ -34,6 +34,7 @@ public class Main extends JavaPlugin {
 		}
 		bpm.registerEvents(new NPEvent(), this);
 		bpm.registerEvents(new EPEvent(), this);
+		bpm.registerEvents(new com.vaincecraft.portalblockerfree.events.nogen.NPEvent(), this);
 		if (ver.contains("1.9") || ver.contains("1.10") || ver.contains("1.11") || ver.contains("1.12") || ver.contains("1.13") || ver.contains("1.14")) {
 			bpm.registerEvents(new EGEvent(), this);
 		}
