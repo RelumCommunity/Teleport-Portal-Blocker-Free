@@ -1,7 +1,9 @@
-package com.vaincecraft.portalblockerfree.events;
+package com.vaincecraft.portalblockerfree.events.cancel;
 
 import org.bukkit.Achievement;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.advancement.Advancement;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -10,7 +12,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
-
 import com.vaincecraft.portalblockerfree.main.Main;
 
 @SuppressWarnings("deprecation")
@@ -21,6 +22,8 @@ public class NPEvent implements Listener {
 			Player p = i.getPlayer();
 			String ver = Bukkit.getVersion();
 			FileConfiguration main = Main.getInstance().getConfig();
+			Location loc = p.getLocation();
+			Material portalFrame = loc.getWorld().getBlockAt(loc).getType();
 			String prefixs = main.getString("Prefix");
 			String prefix = prefixs.replaceAll("&", "§");
 			String netherportale = main.getString("NetherPortal.QuestName");
@@ -52,6 +55,22 @@ public class NPEvent implements Listener {
 							i.setCancelled(true);
 							if (main.getBoolean("NetherPortal.ErrorMessage")) {
 								p.sendMessage(prefix + colormsg1);
+							}
+						}
+					}
+				}
+				if (i.isCancelled()) {
+					if (main.getBoolean("NetherPortal.Deactivate")) {
+						if (ver.contains("1.7") || ver.contains("1.8") || ver.contains("1.9") || ver.contains("1.10") || ver.contains("1.11") || ver.contains("1.12")) {
+							Material Portal = Material.valueOf("PORTAL");
+							if (portalFrame.equals(Portal)) {
+								loc.getWorld().getBlockAt(loc).setType(Material.AIR);
+							}
+						}
+						else {
+							Material Portal = Material.NETHER_PORTAL;
+							if (portalFrame.equals(Portal)) {
+								loc.getWorld().getBlockAt(loc).setType(Material.AIR);
 							}
 						}
 					}
