@@ -6,6 +6,7 @@ ConsoleCheckUpdate: true
 CheckUpdate: true
 Language: "en_US"
 Prefix: "&7[PortalBlockerFree] "
+#Every block type can be used with other block type (except for PermBlockTeleports)
 PermBlockTeleports:
   #Block permanently lost end city portal use
   EGBlock: false
@@ -13,6 +14,7 @@ PermBlockTeleports:
   EPBlock: false
   #Block permanently nether portal use
   NPBlock: false
+#Block Teleportation use until achievement/advancement is completed
 BlockThroughAchievement:
   #Block lost end city portal until achievement/advancement is not completed
   EGBlock: true
@@ -20,6 +22,10 @@ BlockThroughAchievement:
   EPBlock: true
   #Block nether portal until achievement/advancement is not completed
   NPBlock: true
+#Block Portals creation
+BlockPortalCreation:
+  #Block Nether Portal Creation
+  NPCreate: false
 #Lost End City Portal
 EndGateway:
   #For version older than 1.11.2 (1.11.2 included)
@@ -56,3 +62,5 @@ NetherPortal:
   ErrorMessage: true
   #If true, players will be notified (you can find it in lang files)
   PermBlockErrorMessage: true
+  #If true, it will automatically deactivate nether portal (if the player is not able to go through)
+  Deactivate: true
