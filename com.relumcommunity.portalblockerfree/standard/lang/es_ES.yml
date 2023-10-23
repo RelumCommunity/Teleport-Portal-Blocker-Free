@@ -1,0 +1,72 @@
+messages:
+  Help:
+  - '&e ------ &6Portal Blocker Help &e------'
+  - '&a /%label% help'
+  - '&a /%label% resetdata blockbreak endgateway'
+  - '&a /%label% resetdata blockplace endgateway'
+  - '&a /%label% resetdata blockbreak endportal'
+  - '&a /%label% resetdata blockplace endportal'
+  - '&a /%label% resetdata blockbreak netherportal'
+  - '&a /%label% resetdata blockplace netherportal'
+  - '&a /%label% removename blockbreak endgateway {name}'
+  - '&a /%label% removename blockplace endgateway {name}'
+  - '&a /%label% removename blockbreak endportal {name}'
+  - '&a /%label% removename blockplace endportal {name}'
+  - '&a /%label% removename blockbreak netherportal {name}'
+  - '&a /%label% removename blockplace netherportal {name}'
+  - '&a /%label% reload'
+  - '&a /%label% aliases'
+  - '&a Version &7- %ver%'
+database:
+  netherportal:
+    blockbreak:
+      removename: '%prefix% &a%playername% &cha sido eliminado de estos datos.'
+      resetdata: '%prefix% &cSe restablecieron los datos y se eliminaron %number% jugadores.'
+      namenotpresent: '%prefix% &a%playername% &cno esten estos datos'
+    blockplace:
+      removename: '%prefix% &a%playername% &cha sido eliminado de estos datos.'
+      resetdata: '%prefix% &cSe restablecieron los datos y se eliminaron %number% jugadores.'
+      namenotpresent: '%prefix% &a%playername% &cno esten estos datos'
+  endportal:
+    blockbreak:
+      removename: '%prefix% &a%playername% &cha sido eliminado de estos datos.'
+      resetdata: '%prefix% &cSe restablecieron los datos y se eliminaron %number% jugadores.'
+      namenotpresent: '%prefix% &a%playername% &cno esten estos datos'
+    blockplace:
+      removename: '%prefix% &a%playername% &cha sido eliminado de estos datos.'
+      resetdata: '%prefix% &cSe restablecieron los datos y se eliminaron %number% jugadores.'
+      namenotpresent: '%prefix% &a%playername% &cno esten estos datos'
+  endgateway:
+    blockbreak:
+      removename: '%prefix% &a%playername% &cha sido eliminado de estos datos.'
+      resetdata: '%prefix% &cSe restablecieron los datos y se eliminaron %number% jugadores.'
+      namenotpresent: '%prefix% &a%playername% &cno esten estos datos'
+    blockplace:
+      removename: '%prefix% &a%playername% &cha sido eliminado de estos datos.'
+      resetdata: '%prefix% &cSe restablecieron los datos y se eliminaron %number% jugadores.'
+      namenotpresent: '%prefix% &a%playername% &cno esten estos datos'
+config:
+  reload: '%prefix% &cConfig ha sido recargada'
+permblockteleport:
+  netherportal: '%prefix% &cNetherPortals estdesactivado permanentemente en este servidor!'
+  endportal: '%prefix% &cEndPortals estpermanentemente deshabilitado en este servidor!'
+  endgateway: '%prefix% &cEndGateways estpermanentemente deshabilitado en este servidor!'
+breakblockerror:
+  endgatewayblockname: 'arena' #this will replace %blockbreak%
+  endgateway: '%prefix% &cTienes que romper %numberbreak% bloques de %blockbreak%. Ya has roto %blockbroken% bloques!'
+  endportalblockname: 'arenaria' #this will replace %blockbreak%
+  endportal: '%prefix% &cTienes que romper %numberbreak% bloques de %blockbreak%. Ya has roto %blockbroken% bloques!'
+  netherportalblockname: 'obsidiana' #this will replace %blockbreak%
+  netherportal: '%prefix% &cTienes que romper %numberbreak% bloques de %blockbreak%. Ya has roto %blockbroken% bloques!'
+placeblockerror:
+  endgatewayblockname: 'arena' #this will replace %blockplace%
+  endgateway: '%prefix% &cTienes que colocar %numberplace% bloques de %blockplace%. Ya has colocado %blockplaced% bloques!'
+  endportalblockname: 'arenaria' #this will replace %blockplace%
+  endportal: '%prefix% &cTienes que colocar %numberplace% bloques de %blockplace%. Ya has colocado %blockplaced% bloques!'
+  netherportalblockname: 'obsidiana' #this will replace %blockplace%
+  netherportal: '%prefix% &cTienes que colocar %numberplace% bloques de %blockplace%. Ya has colocado %blockplaced% bloques!'
+error:
+  nopermission: '%prefix% &cNo tienes permisos para hacerlo'
+  netherportal: '%prefix% &cTienes que completar %netherportalquest% &cpara usar un portal del nether!'
+  endportal: '%prefix% &cTienes que completar %endportalquest% &cpara usar un portal del end!'
+  endgateway: '%prefix% &cTienes que completar %endgatewayquest% &cutilizar un portal de la ciudad del end!'
