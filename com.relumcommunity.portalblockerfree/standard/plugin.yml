@@ -1,0 +1,11 @@
+name: PortalBlockerFree
+main: com.relumcommunity.portalblockerfree.main.Main
+version: 2.3
+author: nato3623
+description: PortalBlockerFREE let you block portals until player complete certain achievement
+api-version: 1.13
+
+commands:
+  portalblocker:
+    aliases: [pb, portalb, pblocker]
+    descrtiption: recieve a complete list of available commands
