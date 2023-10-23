@@ -26,7 +26,7 @@ import com.relumcommunity.portalblockerfree.messages.messages;
 
 public class Main extends JavaPlugin {
 	public static Main plugin;
-	public String pluginVersion = "V.2.3";
+	public String pluginVersion = "V.2.3.1";
 	public static EGBlocksBreak egblocksbreak;
 	public static EGBlocksPlace egblocksplace;
 	public static EPBlocksBreak epblocksbreak;
