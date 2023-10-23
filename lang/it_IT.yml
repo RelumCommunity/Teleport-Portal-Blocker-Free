@@ -1,8 +1,0 @@
-permblockteleport:
-  netherportal: '&cI portali del nether sono permanentemente disabilitati su questo server!'
-  endportal: '&cI portali del vuoto sono permanentemente disabilitati su questo server!'
-  endgateway: '&cI portali della città del vuoto sono permanentemente disabilitati su questo server!'
-error:
-  netherportal: '&cDevi completare %netherportalquest% &cper usare il portale del nether!'
-  endportal: '&cDevi completare %endportalquest% &cper usare il portale dell end!'
-  endgateway: '&cDevi completare %endgatewayquest% &cper usare il portale della città dell end!'
