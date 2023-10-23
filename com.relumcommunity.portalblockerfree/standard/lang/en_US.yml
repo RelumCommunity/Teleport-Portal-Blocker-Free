@@ -1,0 +1,72 @@
+messages:
+  Help:
+  - '&e ------ &6Portal Blocker Help &e------'
+  - '&a /%label% help'
+  - '&a /%label% resetdata blockbreak endgateway'
+  - '&a /%label% resetdata blockplace endgateway'
+  - '&a /%label% resetdata blockbreak endportal'
+  - '&a /%label% resetdata blockplace endportal'
+  - '&a /%label% resetdata blockbreak netherportal'
+  - '&a /%label% resetdata blockplace netherportal'
+  - '&a /%label% removename blockbreak endgateway {name}'
+  - '&a /%label% removename blockplace endgateway {name}'
+  - '&a /%label% removename blockbreak endportal {name}'
+  - '&a /%label% removename blockplace endportal {name}'
+  - '&a /%label% removename blockbreak netherportal {name}'
+  - '&a /%label% removename blockplace netherportal {name}'
+  - '&a /%label% reload'
+  - '&a /%label% aliases'
+  - '&a Version &7- %ver%'
+database:
+  netherportal:
+    blockbreak:
+      removename: '%prefix% &a%playername% &chas been removed from this data'
+      resetdata: '%prefix% &cData has been resetted and %number% players has been removed'
+      namenotpresent: '%prefix% &a%playername% &cis not in this data'
+    blockplace:
+      removename: '%prefix% &a%playername% &chas been removed from this data'
+      resetdata: '%prefix% &cData has been resetted and %number% players has been removed'
+      namenotpresent: '%prefix% &a%playername% &cis not in this data'
+  endportal:
+    blockbreak:
+      removename: '%prefix% &a%playername% &chas been removed from this data'
+      resetdata: '%prefix% &cData has been resetted and %number% players has been removed'
+      namenotpresent: '%prefix% &a%playername% &cis not in this data'
+    blockplace:
+      removename: '%prefix% &a%playername% &chas been removed from this data'
+      resetdata: '%prefix% &cData has been resetted and %number% players has been removed'
+      namenotpresent: '%prefix% &a%playername% &cis not in this data'
+  endgateway:
+    blockbreak:
+      removename: '%prefix% &a%playername% &chas been removed from this data'
+      resetdata: '%prefix% &cData has been resetted and %number% players has been removed'
+      namenotpresent: '%prefix% &a%playername% &cis not in this data'
+    blockplace:
+      removename: '%prefix% &a%playername% &chas been removed from this data'
+      resetdata: '%prefix% &cData has been resetted and %number% players has been removed'
+      namenotpresent: '%prefix% &a%playername% &cis not in this data'
+config:
+  reload: '%prefix% &cConfig has been reloaded'
+permblockteleport:
+  netherportal: '%prefix% &cNetherPortals are permanently disabled on this server!'
+  endportal: '%prefix% &cEndPortals are permanently disabled on this server!'
+  endgateway: '%prefix% &cEndGateways are permanently disabled on this server!'
+breakblockerror:
+  endgatewayblockname: 'sand' #this will replace %blockbreak%
+  endgateway: '%prefix% &cYou have to brake %numberbreak% blocks of %blockbreak%. You have already broke %blockbroken% blocks!'
+  endportalblockname: 'sandstone' #this will replace %blockbreak%
+  endportal: '%prefix% &cYou have to brake %numberbreak% blocks of %blockbreak%. You have already broke %blockbroken% blocks!'
+  netherportalblockname: 'obsidian' #this will replace %blockbreak%
+  netherportal: '%prefix% &cYou have to brake %numberbreak% blocks of %blockbreak%. You have already broke %blockbroken% blocks!'
+placeblockerror:
+  endgatewayblockname: 'sand' #this will replace %blockplace%
+  endgateway: '%prefix% &cYou have to place %numberplace% blocks of %blockplace%. You have already placed %blockplaced% blocks!'
+  endportalblockname: 'sandstone' #this will replace %blockplace%
+  endportal: '%prefix% &cYou have to place %numberplace% blocks of %blockplace%. You have already placed %blockplaced% blocks!'
+  netherportalblockname: 'obsidian' #this will replace %blockplace%
+  netherportal: '%prefix% &cYou have to place %numberplace% blocks of %blockplace%. You have already placed %blockplaced% blocks!'
+error:
+  nopermission: '%prefix% &cYou do not have permissions to do that'
+  netherportal: '%prefix% &cYou have to complete %netherportalquest% &cto use a nether portal!'
+  endportal: '%prefix% &cYou have to complete %endportalquest% &cto use an end portal!'
+  endgateway: '%prefix% &cYou have to complete %endgatewayquest% &cto use a lost end city portal!'
