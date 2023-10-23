@@ -26,7 +26,7 @@ public class VersionChecker implements Listener {
 		Logger mlog = Main.getInstance().getLogger();
 		if (main.getBoolean("ConsoleCheckUpdate")) {
 			try {
-				HttpsURLConnection connection = (HttpsURLConnection)(new URL("https://relumcommunity.com/progetti/plugins/tpblockerfdree/version.json")).openConnection();
+				HttpsURLConnection connection = (HttpsURLConnection)(new URL("https://relumcommunity.com/progetti/plugins/tpblockerfree/version.json")).openConnection();
 				String version = (new BufferedReader(new InputStreamReader(connection.getInputStream()))).readLine();
 				if (!pluginVersion.equals(version)) {
 					mlog.log(Level.WARNING, " ");
