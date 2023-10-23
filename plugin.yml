@@ -1,6 +1,0 @@
-name: PortalBlockerFree
-main: com.vaincecraft.portalblockerfree.main.Main
-version: 1.6
-author: nato3623
-description: PortalBlockerFREE let you block portals until player complete certain achievement
-api-version: 1.13
