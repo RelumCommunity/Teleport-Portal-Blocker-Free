@@ -1,0 +1,70 @@
+#Use this link to find a complete list of available achievements: https://pastebin.com/0T9NnaF2
+#Use this link to find a complete list of available advancements: https://minecraft.fandom.com/wiki/Advancement
+#Permission list: tpblocker.help, tpblocker.reload, tpblocker.kinds, tpblocker.types, tpblocker.aliases, tpblocker.resetdata, tpblocker.resetname, tpblocker.update
+#If true it will check plugin version in console
+ConsoleCheckUpdate: true
+#If true, players with tpblocker.update will receive an update message in chat (if plugin is not up to date)
+CheckUpdate: true
+#Language will use the lang file named below
+Language: "en_US"
+#Set the time (in minutes) for Database Sync function (def: 10)
+DBSyncTime: 10
+#Prefix will appear in front of hardCoded messages or lang files using %prefix%
+Prefix: "&7[TPBlockerFree] "
+#End Gateway Options
+EndGateway:
+  PermBlock: false #set true to permanently block usage
+  AchievementBlock:
+    Active: true
+    Achievement: "end/dragon_egg" #achievement or advancement reference
+  BlockBreak:
+    Active: true #set true to track broken blocks of the specified type till qnt is reached
+    Block: "SAND"
+    Qnt: 25
+  BlockPlace:
+    Active: true #set true to track placed blocks of the specified type till qnt is reached
+    Block: "SAND"
+    Qnt: 25
+  ErrorMessage: true #set true to enable error messages like (can't use portal cause u need to break/place)
+  PermBlockErrorMessage: true #set true to enable the perm block message
+#End Portal Options
+EndPortal:
+  PermBlock: false
+  AchievementBlock:
+    Active: true
+    Achievement: "story/follow_ender_eye"
+  BlockBreak:
+    Active: true
+    Block: "SANDSTONE"
+    Qnt: 25
+  BlockPlace:
+    Active: true
+    Block: "SANDSTONE"
+    Qnt: 25
+  ErrorMessage: true
+  PermBlockErrorMessage: true
+#Nether Portal Options
+NetherPortal:
+  PermBlock: false
+  ActivationBlock: false
+  AchievementBlock:
+    Active: true
+    Achievement: "story/form_obsidian"
+  BlockBreak:
+    Active: true
+    Block: "OBSIDIAN"
+    Qnt: 25
+  BlockPlace:
+    Active: true
+    Block: "OBSIDIAN"
+    Qnt: 25
+  ErrorMessage: true
+  PermBlockErrorMessage: true
+  Deactivate: true
+  DoNotIn:
+    - 'hub'
+    - 'lobby'
+#Enable this if u want to see debug info/issues
+Debug: false
+#DO NOT TOUCH THIS
+cfgVersion: 2.0

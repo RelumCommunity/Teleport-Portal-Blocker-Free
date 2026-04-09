@@ -25,7 +25,8 @@ If applicable, add screenshots to help explain your problem.
 
 **Server (please complete the following information):**
  - Type: [e.g. Bukkit, Spigot]
- - Version [e.g. 1.7.2, 1.14.4]
+ - Version: [e.g. 1.7.2, 1.14.4, 26.1]
+ - JavaVersion running the server: [e.g. 8, 16, 25]
 
 **Additional context**
 Add any other context about the problem here.

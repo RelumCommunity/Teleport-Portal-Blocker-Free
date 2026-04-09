@@ -1,0 +1,33 @@
+Messages:
+  Help: #Supported placeholders: %label%, %ver%
+    - "&e ------ &6TP Blocker Help &e------"
+    - "&a /%label% help"
+    - "&a /%label% resetdata {kind} {type}"
+    - "&a /%label% resetname {name} {kind} {type}"
+    - "&a /%label% reload"
+    - "&a /%label% kinds"
+    - "&a /%label% types"
+    - "&a /%label% aliases"
+    - "&a Version &7- %ver%"
+  Reload: "%prefix%&cConfig and Lang has been reloaded"#Supported placeholders: %prefix%
+Database:
+  ResetName: "%prefix% %kind% data has been resetted (%type%) for player %player%"#Supported placeholders: %prefix%, %kind%, %type%, %player%
+  ResetData: "%prefix% %kind% data has been resetted (%type%)"#Supported placeholders: %prefix%, %kind%, %type%
+  WrongName: "%prefix% %player% is not present in datas"#Supported placeholders: %prefix%, %player%
+Kinds:
+  Break: "break"
+  Place: "place"
+EndGateway:
+  PermBlock: "%prefix%&cEndGateways are permanently disabled on this server!"#Supported placeholders: %prefix%
+  Achievement: "%prefix%&cYou have to complete %achievement% &cto use an end gateway!"#Supported placeholders: %prefix%, %achievement%
+  BreakPlaceNeeded: "%prefix%&eBlocks to %kinds% &a%blockscounted%&f/&c%totalblocks%&e of &a%blocktype%"#Supported placeholders: %prefix%, %kinds%, %blockscounted%, %totalblocks%, %blocktype%
+EndPortal:
+  PermBlock: "%prefix%&cEndPortals are permanently disabled on this server!"#Supported placeholders: %prefix%
+  Achievement: "%prefix%&cYou have to complete %achievement% &cto use an end portal!"#Supported placeholders: %prefix%, %achievement%
+  BreakPlaceNeeded: "%prefix%&eBlocks to %kinds% &a%blockscounted%&f/&c%totalblocks%&e of &a%blocktype%"#Supported placeholders: %prefix%, %kinds%, %blockscounted%, %totalblocks%, %blocktype%
+NetherPortal:
+  PermBlock: "%prefix%&cNetherPortals are permanently disabled on this server!"#Supported placeholders: %prefix%
+  Achievement: "%prefix%&cYou have to complete %achievement% &cto use a nether portal!"#Supported placeholders: %prefix%, %achievement%
+  BreakPlaceNeeded: "%prefix%&eBlocks to %kinds% &a%blockscounted%&f/&c%totalblocks%&e of &a%blocktype%"#Supported placeholders: %prefix%, %kinds%, %blockscounted%, %totalblocks%, %blocktype%
+Error:
+  NoPerm: "%prefix%&cYou don't have permission to do that"#Supported placeholders: %prefix%

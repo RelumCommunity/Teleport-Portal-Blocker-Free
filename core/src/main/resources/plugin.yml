@@ -1,0 +1,14 @@
+name: TPBlockerFree
+version: ${project.version}
+main: com.relumcommunity.tpblockerfree.main.Main
+api-version: '1.21'
+prefix: "TPBlockerFree"
+load: STARTUP
+author: RelumCommunity
+description: TPBlockerFREE let you block portals until player fulfill certain conditions
+website: https://www.relumcommunity.com
+
+commands:
+  tpblocker:
+    aliases: [tpb, tportalb]
+    description: Receive a complete list of available commands

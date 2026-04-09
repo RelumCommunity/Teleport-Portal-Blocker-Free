@@ -1,0 +1,139 @@
+package com.relumcommunity.tpblockerfree.main;
+
+import com.relumcommunity.tpblockerfree.commands.Commands;
+import com.relumcommunity.tpblockerfree.data.BlocksData;
+import com.relumcommunity.tpblockerfree.events.*;
+import lombok.Getter;
+import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.event.Listener;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.*;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.logging.Logger;
+
+public class Main extends JavaPlugin {
+    @Getter
+    private static Main plugin;
+    @Getter
+    private static String pluginVersion;
+    @Getter
+    private final Logger log = getLogger();
+    @Getter
+    private static FileConfiguration cfg;
+    @Getter
+    private static FileConfiguration lang;
+    private BlocksData blocksData;
+    public void onEnable() {
+        plugin = this;
+        pluginVersion = plugin.getDescription().getVersion();
+        String ver = Bukkit.getBukkitVersion();
+        PluginManager bpm = Bukkit.getPluginManager();
+        File sqlite = new File(getDataFolder() + "/BlocksData.sqlite");
+        String[] version = ver.split(" ");
+        String[] server = ver.split("-");
+        if (ver.contains("Spigot")) {
+            log.info("TPBlockerFree is using: " + server[1] + " | Version: " + version[1] + version[2]);
+        } else {
+            log.info("TPBlockerFree is using: " + ver + " UNTESTED SERVER VERSION");
+        }
+        saveDefaultConfig();
+        cfg = plugin.getConfig();
+        setupLang();
+        new VersionChecker();
+        bpm.registerEvents(new BlocksEvent(), plugin);
+        int mcVersion = Integer.parseInt(server[0].split("\\.")[0]) > 1 ? Integer.parseInt(server[0].split("\\.")[0]) : Integer.parseInt(server[0].split("\\.")[1]);
+        if (mcVersion >= 12) {
+            bpm.registerEvents(new TPEvent(), plugin);
+        } else {
+            try {
+                bpm.registerEvents((Listener) Class.forName("com.relumcommunity.tpblockerfree.events.TPEventLegacy").getDeclaredConstructor().newInstance(), plugin);
+            } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
+                log.severe("An error occurred while enabling legacy version");
+                if (plugin.getConfig().getBoolean("Debug")) {
+                    log.severe("[DEBUG] Debug trace: " + Arrays.toString(e.getStackTrace()));
+                }
+                throw new RuntimeException(e);
+            }
+        }
+        getCommand("tpblocker").setExecutor(new Commands());
+        if (!sqlite.exists()) {
+            try {
+                sqlite.createNewFile();
+            } catch (IOException e) {
+                log.severe("An error occurred while creating the sqlite file");
+                if (plugin.getConfig().getBoolean("Debug")) {
+                    log.severe("[DEBUG] Debug trace: " + Arrays.toString(e.getStackTrace()));
+                }
+                throw new RuntimeException(e);
+            }
+        }
+        try {
+            blocksData = new BlocksData(sqlite);
+        } catch (ClassNotFoundException | SQLException e) {
+            log.severe("An error occurred while connecting to the sqlite file");
+            if (plugin.getConfig().getBoolean("Debug")) {
+                log.severe("[DEBUG] Debug trace: " + Arrays.toString(e.getStackTrace()));
+            }
+            throw new RuntimeException(e);
+        }
+        log.info("TPBlockerFree " + pluginVersion + " has been enabled");
+    }
+    public void onDisable() {
+        try {
+            blocksData.closeConnection();
+        } catch (SQLException e) {
+            log.warning("An error occurred while closing connection with the sqlite file");
+            if (plugin.getConfig().getBoolean("Debug")) {
+                log.warning("[DEBUG] Debug trace: " + Arrays.toString(e.getStackTrace()));
+            }
+        }
+        log.info("TPBlockerFree " + pluginVersion + " has been disabled");
+    }
+    private void setupLang() {
+        for (String fileName : new String[] {"en_US.yml", "it_IT.yml", "es_ES.yml"}) {
+            try {
+                copyFile(fileName);
+            } catch (IOException e) {
+                log.warning("Error occured while initializing '" + fileName + "'!");
+                if (cfg.getBoolean("Debug")) {
+                    log.warning("[DEBUG] Debug trace: " + Arrays.toString(e.getStackTrace()));
+                }
+            }
+        }
+        lang = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder() + "/lang/", cfg.getString("Language") + ".yml"));
+    }
+    private void copyFile(String fileName) throws IOException {
+        File file = new File(plugin.getDataFolder() + "/lang/", fileName);
+        if (!file.exists()) {
+            plugin.getDataFolder().mkdirs();
+            file.getParentFile().mkdirs();
+            file.createNewFile();
+            log.info("Creating language file '" + fileName + "'.");
+            InputStream in = getClass().getResourceAsStream("/lang/" + fileName);
+            if (in != null) {
+                OutputStream out = new FileOutputStream(file);
+                byte[] buffer = new byte[63];
+                int current;
+                while ((current = in.read(buffer)) > -1) {
+                    out.write(buffer, 0, current);
+                }
+                out.close();
+                in.close();
+            }
+        }
+    }
+    public void reloadFiles(CommandSender sender) {
+        plugin = this;
+        reloadConfig();
+        cfg = plugin.getConfig();
+        setupLang();
+        sender.sendMessage(lang.getString("Messages.Reload", "Plugin Reloaded").replaceAll("%prefix%", cfg.getString("Prefix", "§7[TPBlockerFree] ")).replaceAll("&", "§"));
+    }
+}

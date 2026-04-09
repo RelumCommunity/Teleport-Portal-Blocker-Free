@@ -1,0 +1,33 @@
+Messages:
+  Help: #Supported placeholders: %label%, %ver%
+    - "&e ------ &6TP Blocker Help &e------"
+    - "&a /%label% help"
+    - "&a /%label% resetdata {kind} {type}"
+    - "&a /%label% resetname {name} {kind} {type}"
+    - "&a /%label% reload"
+    - "&a /%label% kinds"
+    - "&a /%label% types"
+    - "&a /%label% aliases"
+    - "&a Version &7- %ver%"
+  Reload: "%prefix%&cConfig e file di lingua sono stati ricaricati"#Supported placeholders: %prefix%
+Database:
+  ResetName: "%prefix% i dati di: %kind% sono stati resettati (%type%) per il giocatore %player%"#Supported placeholders: %prefix%, %kind%, %type%, %player%
+  ResetData: "%prefix% i dati di: %kind% sono stati resettati (%type%)"#Supported placeholders: %prefix%, %kind%, %type%
+  WrongName: "%prefix% %player% non presente nei dati"#Supported placeholders: %prefix%, %player%
+Kinds:
+  Break: "rompere"
+  Place: "piazzare"
+EndGateway:
+  PermBlock: "%prefix%&cGli EndGateways sono permanentemente disabilitati su questo server!"#Supported placeholders: %prefix%
+  Achievement: "%prefix%&cDevi completare %achievement% &cper usare un end gateway!"#Supported placeholders: %prefix%, %achievement%
+  BreakPlaceNeeded: "%prefix%&eBlocchi da %kinds% &a%blockscounted%&f/&c%totalblocks%&e di &a%blocktype%"#Supported placeholders: %prefix%, %kinds%, %blockscounted%, %totalblocks%, %blocktype%
+EndPortal:
+  PermBlock: "%prefix%&cGli EndPortals sono permanentemente disabilitati su questo server!"#Supported placeholders: %prefix%
+  Achievement: "%prefix%&cDevi completare %achievement% &cper usare un end portal!"#Supported placeholders: %prefix%, %achievement%
+  BreakPlaceNeeded: "%prefix%&eBlocchi da %kinds% &a%blockscounted%&f/&c%totalblocks%&e di &a%blocktype%"#Supported placeholders: %prefix%, %kinds%, %blockscounted%, %totalblocks%, %blocktype%
+NetherPortal:
+  PermBlock: "%prefix%&cI NetherPortals sono permanentemente disabilitati su questo server!"#Supported placeholders: %prefix%
+  Achievement: "%prefix%&cDevi completare %achievement% &cper usare un nether portal!"#Supported placeholders: %prefix%, %achievement%
+  BreakPlaceNeeded: "%prefix%&eBlocchi da %kinds% &a%blockscounted%&f/&c%totalblocks%&e di &a%blocktype%"#Supported placeholders: %prefix%, %kinds%, %blockscounted%, %totalblocks%, %blocktype%
+Error:
+  NoPerm: "%prefix%&cNon hai i permessi per farlo"#Supported placeholders: %prefix%
